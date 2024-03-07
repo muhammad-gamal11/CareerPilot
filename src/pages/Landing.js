@@ -1,21 +1,23 @@
+import styled from "styled-components";
 import logo from "../assets/images/logo.png";
-import main from "../assets/images/main.jpg";
+import main from "../assets/images/main.png";
+import Wrapper from "../assets/wrappers/LandingPage";
 
 const Landing = () => {
   return (
-    <main>
+    <Wrapper>
       <nav>
         <img
           src={logo}
           alt="logo"
-          style={{ width: "12rem", margin: ".7rem 0 0 1rem" }}
+          style={{ width: "12rem" }}
           className="logo"
         />
       </nav>
       <div className="container page">
         <div className="info">
           <h1>
-            job <span>tracking</span> app
+            with <span>careerPilot</span> ,<br /> your Job hunt made faster
           </h1>
           <p>
             Introducing CareerPilot, your ultimate companion in the job search
@@ -27,13 +29,13 @@ const Landing = () => {
             progress with intuitive analytics and reporting features. Whether
             you're a seasoned professional or just starting your career,
             CareerPilot empowers you to take control of your job search and land
-            your dream job faster. Download CareerPilot now and embark on a
-            journey to professional success!
+            your dream job faster.
           </p>
+          <button className="btn btn-hero">Login/Register</button>
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
-    </main>
+    </Wrapper>
   );
 };
 export default Landing;
