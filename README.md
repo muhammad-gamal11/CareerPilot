@@ -1,4 +1,4 @@
-##### done used html, css, normalize.css, reactJs, reactRouter, styled components,
+##### done used html, css, normalize.css, reactJs, reactRouter, styled components,Redux toolkit
 
 # CareerPilot
 
