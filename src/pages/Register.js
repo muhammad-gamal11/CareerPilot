@@ -72,7 +72,7 @@ const Register = () => {
         />
         {/* single form end */}
         <button type="submit" className="btn btn-block" disabled={isLoading}>
-          submit
+          {isLoading ? "Loading..." : "Submit"}
         </button>
         <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
