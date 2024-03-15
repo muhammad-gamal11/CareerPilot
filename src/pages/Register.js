@@ -71,7 +71,7 @@ const Register = () => {
           handleChange={handleChange}
         />
         {/* single form end */}
-        <button type="submit" className="btn btn-block">
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
           submit
         </button>
         <p>
