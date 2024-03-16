@@ -1,5 +1,8 @@
 ##### done used html, css, normalize.css, reactJs, reactRouter,React Toastify, styled components,Redux toolkit,axios js , added to local storage
 
+<!-- Protected route has been added  -->
+<!-- sidebar on small screen has been added  -->
+
 # CareerPilot
 
 Project in Action - [CareerPilot](https://redux-toolkit-CareerPilot.netlify.app/)
