@@ -39,8 +39,12 @@ const Wrapper = styled.aside`
     background: transparent;
     border-color: transparent;
     font-size: 2rem;
-    color: var(--red-dark);
+    color: var(--red-light);
     cursor: pointer;
+    &:hover {
+      color: var(--red-dark);
+      transition: var(--transition);
+    }
   }
   .nav-links {
     padding-top: 2rem;
@@ -77,7 +81,7 @@ const Wrapper = styled.aside`
     color: var(--grey-900);
   }
   .active .icon {
-    color: var(--primary-500);
+    color: var(--primary-600);
   }
 `;
 export default Wrapper;
