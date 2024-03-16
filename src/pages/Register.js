@@ -44,9 +44,11 @@ const Register = () => {
 
   // ========| navigate to homepage once the user logins |========
   useEffect(() => {
-    setTimeout(() => {
-      navigate("/");
-    }, 3000);
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
   }, [navigate, user]);
 
   return (
