@@ -63,7 +63,6 @@ const Profile = () => {
           </button>
         </div>
       </form>
-      <form action=""></form>
     </Wrapper>
   );
 };
