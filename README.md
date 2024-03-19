@@ -1,7 +1,9 @@
 ##### done using html, css, normalize.css, reactJs, reactRouter,React Toastify, styled components,Redux toolkit,axios js , added to local storage
 
 <!-- Protected route has been added  -->
+<!-- responsive design -->
 <!-- sidebar on small screen has been added  -->
+<!-- added update the user info feature -->
 
 # CareerPilot
 
