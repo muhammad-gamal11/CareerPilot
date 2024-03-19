@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { FormRow } from "../../components";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useSelector, useDispatch } from "react-redux";
@@ -57,6 +58,27 @@ const AddJob = () => {
             labelText="job location"
             handleChange={handleJobInput}
           />
+          {/* status */}
+          <div className="form-row">
+            <label htmlFor="status" className="form-label">
+              status
+            </label>
+            <select
+              name="status"
+              id="status"
+              className="form-select"
+              value={status}
+              onChange={handleJobInput}
+            >
+              {statusOptions.map((item, index) => {
+                return (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
           <div className="btn-container">
             <button
               type="button"
