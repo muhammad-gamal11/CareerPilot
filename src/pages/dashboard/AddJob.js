@@ -3,7 +3,11 @@ import { FormRow, FormRowSelect } from "../../components";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { handleChange } from "../../features/job/jobSlice";
+import {
+  handleChange,
+  clearValues,
+  createJob,
+} from "../../features/job/jobSlice";
 
 const AddJob = () => {
   const {
@@ -19,12 +23,15 @@ const AddJob = () => {
   } = useSelector((store) => store.job);
 
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!position || !company || !jobLocation) {
       toast.error("Please fill out all fields");
+      return;
     }
+    dispatch(createJob({ position, company, jobLocation, jobType, status }));
   };
 
   const handleJobInput = (e) => {
@@ -57,32 +64,32 @@ const AddJob = () => {
           <FormRow
             type="text"
             name="jobLocation"
-            value={jobLocation}
             labelText="job location"
+            value={jobLocation}
             handleChange={handleJobInput}
           />
           {/* status */}
           <FormRowSelect
-            handleChange={handleJobInput}
-            list={statusOptions}
             name="status"
             value={status}
+            handleChange={handleJobInput}
+            list={statusOptions}
           />
-          {/* job type */}
+          {/* job type*/}
           <FormRowSelect
+            name="jobType"
+            labelText="job type"
+            value={jobType}
             handleChange={handleJobInput}
             list={jobTypeOptions}
-            name="jobType"
-            value={status}
-            labelText="job type"
           />
           <div className="btn-container">
             <button
               type="button"
               className="btn btn-block clear-btn"
-              onClick={() => console.log("clear")}
+              onClick={() => dispatch(clearValues())}
             >
-              Clear
+              clear
             </button>
             <button
               type="submit"
@@ -90,7 +97,7 @@ const AddJob = () => {
               onClick={handleSubmit}
               disabled={isLoading}
             >
-              Submit
+              submit
             </button>
           </div>
         </div>
