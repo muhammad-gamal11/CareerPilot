@@ -1,13 +1,8 @@
-import {
-  FaLocationArrow,
-  FaBriefcase,
-  FaCalendarAlt,
-  FaBed,
-} from "react-icons/fa";
+import React from "react";
+import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Job";
 import { useDispatch } from "react-redux";
-import JobInfo from "./JobInfo";
 import moment from "moment";
 
 const Job = ({
@@ -33,16 +28,25 @@ const Job = ({
       </header>
       <div className="content">
         <div className="content-center">
-          <Job icon={<FaLocationArrow />} text={jobLocation} />
-          <Job icon={<FaCalendarAlt />} text={date} />
-          <Job icon={<FaBriefcase />} text={jobType} />
+          <div className="job-info">
+            <FaLocationArrow className="icon" />
+            <span>{jobLocation}</span>
+          </div>
+          <div className="job-info">
+            <FaCalendarAlt className="icon" />
+            <span>{date}</span>
+          </div>
+          <div className="job-info">
+            <FaBriefcase className="icon" />
+            <span>{jobType}</span>
+          </div>
           <div className={`status ${status}`}>{status}</div>
         </div>
         <footer>
           <div className="actions">
             <Link
-              to="./add-job"
-              className="btn adit-btn"
+              to="/add-job"
+              className="btn edit-btn"
               onClick={() => console.log("edit")}
             >
               edit

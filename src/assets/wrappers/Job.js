@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   background: var(--white);
@@ -71,6 +71,10 @@ const Wrapper = styled.article`
     }
   }
 
+  .job-info .icon {
+    margin-right: 0.5rem;
+  }
+
   .status {
     border-radius: var(--borderRadius);
     text-transform: capitalize;
@@ -83,6 +87,13 @@ const Wrapper = styled.article`
   footer {
     margin-top: 1rem;
   }
+
+  .actions {
+    display: flex;
+    justify-content: end;
+    /* border: 2px solid red; */
+  }
+
   .edit-btn,
   .delete-btn {
     letter-spacing: var(--letterSpacing);
@@ -90,8 +101,8 @@ const Wrapper = styled.article`
     height: 30px;
   }
   .edit-btn {
-    color: var(--green-dark);
-    background: var(--green-light);
+    /* color: var(--green-dark); */
+    /* background: var(--green-light); */
     margin-right: 0.5rem;
   }
   .delete-btn {

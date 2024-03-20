@@ -1,28 +1,29 @@
 /* eslint-disable no-restricted-globals */
-import { FormRow, FormRowSelect } from "../../components";
-import Wrapper from "../../assets/wrappers/DashboardFormPage";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import {
-  handleChange,
   clearValues,
   createJob,
+  handleChange,
 } from "../../features/job/jobSlice";
+import { FormRow, FormRowSelect } from "../../components";
 
 const AddJob = () => {
+  const dispatch = useDispatch();
   const {
     isLoading,
     position,
     company,
     jobLocation,
     jobType,
+    status,
     jobTypeOptions,
     statusOptions,
     isEditing,
-    editJobId,
   } = useSelector((store) => store.job);
-
-  const dispatch = useDispatch();
+  const { user } = useSelector((store) => store.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,13 +38,16 @@ const AddJob = () => {
   const handleJobInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    // console.log(name, value);
     dispatch(handleChange({ name, value }));
   };
 
+  useEffect(() => {
+    dispatch(handleChange({ name: "jobLocation", value: user?.location }));
+  }, [dispatch, user]);
+
   return (
     <Wrapper>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h3>{isEditing ? "edit job" : "add job"}</h3>
         <div className="form-center">
           {/* position */}
@@ -94,10 +98,9 @@ const AddJob = () => {
             <button
               type="submit"
               className="btn btn-block submit-btn"
-              onClick={handleSubmit}
               disabled={isLoading}
             >
-              submit
+              {isLoading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </div>
