@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -6,6 +5,7 @@ import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import {
   clearValues,
   createJob,
+  editJob,
   handleChange,
 } from "../../features/job/jobSlice";
 import { FormRow, FormRowSelect } from "../../components";
@@ -22,6 +22,7 @@ const AddJob = () => {
     jobTypeOptions,
     statusOptions,
     isEditing,
+    editJobId,
   } = useSelector((store) => store.job);
   const { user } = useSelector((store) => store.user);
 
@@ -32,7 +33,23 @@ const AddJob = () => {
       toast.error("Please fill out all fields");
       return;
     }
-    dispatch(createJob({ position, company, jobLocation, jobType, status }));
+
+    if (isEditing) {
+      dispatch(
+        editJob({
+          jobId: editJobId,
+          job: {
+            position,
+            company,
+            jobLocation,
+            jobType,
+            status,
+          },
+        })
+      );
+    } else {
+      dispatch(createJob({ position, company, jobLocation, jobType, status }));
+    }
   };
 
   const handleJobInput = (e) => {
@@ -45,7 +62,7 @@ const AddJob = () => {
     if (!isEditing) {
       dispatch(handleChange({ name: "jobLocation", value: user?.location }));
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, isEditing]);
 
   return (
     <Wrapper>
