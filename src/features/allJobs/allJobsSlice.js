@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
+import { handleChange } from "../job/jobSlice";
 
 const initialFiltersState = {
   search: "",
@@ -24,14 +25,14 @@ const initialState = {
 export const getAllJobs = createAsyncThunk(
   "allJobs/getJobs",
   async (_, thunkAPI) => {
-    let url = "/jobs";
+    let url = `/jobs`;
     try {
       const response = await customFetch.get(url, {
         headers: {
           Authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       });
-      // console.log(response.data);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue("There was an Error");
@@ -45,7 +46,7 @@ export const showStats = createAsyncThunk(
     try {
       const response = await customFetch.get("/jobs/stats");
       console.log(response.data);
-      return response.data;
+      // return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
@@ -63,7 +64,14 @@ const allJobsSlice = createSlice({
     hideLoading: (state) => {
       state.isLoading = false;
     },
+    handleChange: (state, { payload: { name, value } }) => {
+      state[name] = value;
+    },
+    clearFilters: (state) => {
+      return { ...state, ...initialFiltersState };
+    },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(getAllJobs.pending, (state) => {
@@ -72,6 +80,8 @@ const allJobsSlice = createSlice({
       .addCase(getAllJobs.fulfilled, (state, { payload }) => {
         state.isLoading = false; // Change to false as the request is fulfilled
         state.jobs = payload.jobs;
+        state.numOfPages = payload.numOfPages;
+        state.totalJobs = payload.totalJobs;
       })
       .addCase(getAllJobs.rejected, (state, { payload }) => {
         state.isLoading = false; // Handle rejection similarly to fulfilled

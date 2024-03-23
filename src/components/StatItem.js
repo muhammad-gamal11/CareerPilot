@@ -11,4 +11,5 @@ const StatItem = ({ count, title, icon, color, bcg }) => {
     </Wrapper>
   );
 };
+
 export default StatItem;
