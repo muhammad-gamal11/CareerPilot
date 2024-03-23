@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   padding: 2rem;
@@ -22,6 +22,7 @@ const Wrapper = styled.article`
     letter-spacing: var(--letterSpacing);
     text-align: left;
     margin-top: 0.5rem;
+    font-weight: bold;
   }
   .icon {
     width: 70px;
@@ -36,6 +37,6 @@ const Wrapper = styled.article`
       color: ${(props) => props.color};
     }
   }
-`
+`;
 
-export default Wrapper
+export default Wrapper;
