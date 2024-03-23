@@ -1,4 +1,4 @@
-##### done using html, css, normalize.css, reactJs, reactRouter,React Toastify, styled components,Redux toolkit,axios js , moment js ,added to local storage , CRUD functionality, demonstration app
+##### done using html, css, normalize.css, reactJs, reactRouter,React Toastify, styled components,Redux toolkit,axios js , moment js ,added to local storage , CRUD functionality, demonstration app , added charts to demonstrate
 
 <!-- Protected route has been added  -->
 <!-- responsive design -->
