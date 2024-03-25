@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import customFetch from "../../utils/axios";
 import {
   addUserToLocalStorage,
   getUserFromLocalStorage,
@@ -18,6 +17,7 @@ const initialState = {
   isSidebarOpen: false,
   user: getUserFromLocalStorage(),
 };
+// ========== | REGISTER USER |==========
 
 export const registerUser = createAsyncThunk(
   "user/registerUser",
@@ -25,6 +25,7 @@ export const registerUser = createAsyncThunk(
     return registerUserThunk("./auth/register", user, thunkApi);
   }
 );
+// ========== | LOGIN USER |==========
 
 export const loginUser = createAsyncThunk(
   "user/loginUser",
@@ -32,6 +33,7 @@ export const loginUser = createAsyncThunk(
     return loginUserThunk("/auth/login", user, thunkApi);
   }
 );
+// ========== | UPDATE USER |==========
 
 export const updateUser = createAsyncThunk(
   "user/updateUser",
@@ -40,6 +42,7 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+// ========== | CLEAR STORE |==========
 export const clearStore = createAsyncThunk("user/clearStore", clearStoreThunk);
 
 const userSlice = createSlice({

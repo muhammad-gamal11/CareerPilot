@@ -3,11 +3,7 @@ import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import Logo from "./Logo";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  toggleSidebar,
-  logoutUser,
-  clearStore,
-} from "../features/user/userSlice";
+import { toggleSidebar, clearStore } from "../features/user/userSlice";
 const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false);
   const { user } = useSelector((store) => store.user);
