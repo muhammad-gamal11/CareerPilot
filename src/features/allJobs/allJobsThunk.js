@@ -9,11 +9,7 @@ export const getAllJobsThunk = async (_, thunkAPI) => {
     url = url + `&search=${search}`;
   }
   try {
-    const response = await customFetch.get(url, {
-      headers: {
-        Authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-      },
-    });
+    const response = await customFetch.get(url);
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -24,8 +20,8 @@ export const getAllJobsThunk = async (_, thunkAPI) => {
 export const showStatsThunk = async (_, thunkAPI) => {
   try {
     const response = await customFetch.get("/jobs/stats");
-    console.log(response.data);
-    // return response.data;
+    // console.log(response.data);
+    return response.data;
   } catch (error) {
     return checkForUnauthorizedResponse(error, thunkAPI);
   }

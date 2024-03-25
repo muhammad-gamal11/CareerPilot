@@ -23,11 +23,7 @@ export const loginUserThunk = async (url, user, thunkAPI) => {
 
 export const updateUserThunk = async (url, user, thunkAPI) => {
   try {
-    const response = await customFetch.patch(url, user, {
-      headers: {
-        authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-      },
-    });
+    const response = await customFetch.patch(url, user);
     return response.data;
   } catch (error) {
     return checkForUnauthorizedResponse(error, thunkAPI);
