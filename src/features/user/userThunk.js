@@ -1,5 +1,7 @@
 import customFetch from "../../utils/axios";
 import { logoutUser } from "./userSlice";
+import { clearValues } from "../job/jobSlice";
+import { clearAllJobsState } from "../allJobs/allJobsSlice";
 
 export const registerUserThunk = async (url, user, thunkAPI) => {
   try {
@@ -34,5 +36,19 @@ export const updateUserThunk = async (url, user, thunkAPI) => {
     }
     // console.log(error.response);
     return thunkAPI.rejectWithValue(error.response.data.msg);
+  }
+};
+
+export const clearStoreThunk = async (message, thunkAPI) => {
+  try {
+    // ========| LOGOUT USER |========
+    thunkAPI.dispatch(logoutUser(message));
+    // ========| ClEAR JOBS VALUE |========
+    thunkAPI.dispatch(clearAllJobsState());
+    // ========| ClEAR JOBS INPUT VALUES |========
+    thunkAPI.dispatch(clearValues());
+    return Promise.resolve();
+  } catch (error) {
+    return Promise.reject();
   }
 };
