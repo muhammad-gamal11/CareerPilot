@@ -46,4 +46,4 @@ Your feedback is valuable! Feel free to reach out with any suggestions, question
 
 Let's connect on LinkedIn and discuss more about this project and other exciting opportunities!
 
-[![LinkedIn Profile](https://img.shields.io/badge/LinkedIn-Profile-blue)](link-to-your-linkedin-profile)
+[![LinkedIn Profile](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/muhammad-gamal-310b161a7/)
