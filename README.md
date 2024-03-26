@@ -1,6 +1,6 @@
 # Job Tracking App
 
-![Job Tracking App Preview](link-to-preview-image)
+![Job Tracking App Preview](https://career-pilot.netlify.app/)
 
 ## Overview
 
